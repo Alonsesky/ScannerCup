@@ -11,10 +11,10 @@ export class CouponService {
 
   async getCoupons(){
 
-    const couponData: ICouponData[] | null = await this.recoverCupons();
+    const couponsData = await this.recoverCupons();
 
-    if(couponData){
-      return this.processCoupons(couponData);
+    if(couponsData){
+      return this.processCoupons(couponsData);
     }
 
     return fetch('./assets/data/coupons.json').then(async(res: Response)=>{
@@ -44,6 +44,7 @@ export class CouponService {
       key:'ddr_key_coupons',
       value: JSON.stringify(couponData)
     })
+
   }
 
   private async recoverCupons(){

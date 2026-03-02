@@ -39,12 +39,12 @@ export class Tab1Page {
 
   async ionViewWillEnter(){
     this.coupons = await this.couponService.getCoupons();
-    console.log(this.coupons);
 
   }
 
-  changeActive(coupon: Coupon){
+  async changeActive(coupon: Coupon){
     coupon.active = !coupon.active
+    await this.couponService.saveCoupon(this.coupons);
   }
 
 }
